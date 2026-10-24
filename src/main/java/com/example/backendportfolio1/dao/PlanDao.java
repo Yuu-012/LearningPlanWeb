@@ -20,7 +20,7 @@ public class PlanDao {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     public Plan getPlan(Integer id){
-        String sql = "SELECT id, name, startDay, endDay, duration, state " +
+        String sql = "SELECT id, name, startDay, endDay, state " +
                      "FROM plan WHERE id = :id";
         Map<String, Object> map = new HashMap<>();
         PlanRowmapper rowMapper = new PlanRowmapper();
@@ -36,13 +36,12 @@ public class PlanDao {
     }
 
     public Integer createPlan(Plan plan){
-        String sql = "INSERT INTO plan(name, startDay, endDay, duration, state) " +
-                     "VALUES(:name, :startDay, :endDay, :duration, :state)";
+        String sql = "INSERT INTO plan(name, startDay, endDay, state) " +
+                     "VALUES(:name, :startDay, :endDay, :state)";
         Map<String, Object> map = new HashMap<>();
         map.put("name", plan.getName());
         map.put("startDay", plan.getStart());
         map.put("endDay", plan.getEnd());
-        map.put("duration", plan.getDuration());
         map.put("state", plan.getState());
 
         // 資料庫中自動生成與排列的id (Primary key)
@@ -56,14 +55,13 @@ public class PlanDao {
 
     public void updatePlan(Integer id, Plan plan){
         String sql = "UPDATE plan SET name = :name, startDay = :startDay, " +
-                     "endDay = :endDay, duration = :duration, state = :state " +
+                     "endDay = :endDay, state = :state " +
                      "WHERE id = :id";
         Map<String, Object> map = new HashMap<>();
         map.put("id", id);
         map.put("name", plan.getName());
         map.put("startDay", plan.getStart());
         map.put("endDay", plan.getEnd());
-        map.put("duration", plan.getDuration());
         map.put("state", plan.getState());
 
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map));

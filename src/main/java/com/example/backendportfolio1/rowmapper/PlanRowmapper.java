@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PlanRowmapper implements RowMapper {
+public class PlanRowmapper implements RowMapper<Plan> {
 
     @Override
     public Plan mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -17,7 +17,6 @@ public class PlanRowmapper implements RowMapper {
         plan.setName(rs.getString("name"));
         plan.setStart(rs.getDate("startDay"));
         plan.setEnd(rs.getDate("endDay"));
-        plan.setDuration(rs.getInt("duration"));
         plan.setState(rs.getInt("state"));
 
         return plan;
