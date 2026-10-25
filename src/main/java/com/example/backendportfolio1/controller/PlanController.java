@@ -13,7 +13,7 @@ public class PlanController {
     @Autowired
     private PlanService planService;
 
-    @GetMapping("/getPlan/{id}")
+    @GetMapping("/plan/{id}")
     public ResponseEntity<Plan> getPlan(@PathVariable Integer id){
         Plan plan = planService.getPlan(id);
 
@@ -23,16 +23,16 @@ public class PlanController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @PostMapping("/createPlan")
+    @PostMapping("/plan")
     public ResponseEntity<Plan> createPlan(@RequestBody Plan plan){
         Integer id = planService.createPlan(plan);
 
         Plan newPlan = planService.getPlan(id);
 
-        return ResponseEntity.status(HttpStatus.OK).body(newPlan);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newPlan);
     }
 
-    @PutMapping("/updatePlan/{id}")
+    @PutMapping("/plan/{id}")
     public ResponseEntity<?> updatePlan(@PathVariable Integer id, @RequestBody Plan plan){
         Plan checkPlan = planService.getPlan(id);
 
@@ -45,10 +45,10 @@ public class PlanController {
         return ResponseEntity.status(HttpStatus.OK).body(afterPlan);
     }
 
-    @DeleteMapping("/deletePlan/{id}")
+    @DeleteMapping("/plan/{id}")
     public ResponseEntity<?> deletePlan(@PathVariable Integer id){
         planService.deletePlan(id);
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

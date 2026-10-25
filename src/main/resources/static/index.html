@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>學習計畫管理</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>學習計畫管理</h1>
+
+    <form id="plan-form">
+        <input id="plan-title"    type="text"
+               placeholder="計畫名稱"                  required>
+        <input id="plan-start"    type="date"
+               placeholder="計畫起始日"                required>
+        <input id="plan-end"      type="date"
+               placeholder="計畫中止日"                required>
+        <input id="plan-state"    type="number"
+               placeholder="計畫狀態(是否完成/否0/是1)"  required>
+        <button type="submit">新增計畫</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>計畫名稱</th>
+                <th>計畫起始日</th>
+                <th>計畫中止日</th>
+                <th>計畫狀態</th>
+            </tr>
+        </thead>
+        <tbody id="plan-list"></tbody>
+    </table>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
