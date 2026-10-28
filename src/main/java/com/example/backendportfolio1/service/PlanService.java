@@ -5,11 +5,15 @@ import com.example.backendportfolio1.model.Plan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class PlanService {
 
     @Autowired
     private PlanDao planDao;
+
+    public List<Plan> getPlans(){ return planDao.getPlans(); }
 
     public Plan getPlan(Integer id){
         return planDao.getPlan(id);

@@ -19,6 +19,20 @@ public class PlanDao {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    public List<Plan> getPlans(){
+        String sql = "SELECT id, name, startDay, endDay, state " +
+                     "FROM plan";
+        Map<String, Object> map = new HashMap<>();
+        PlanRowmapper rowMapper = new PlanRowmapper();
+
+        List<Plan> planList = namedParameterJdbcTemplate.query(sql, map, rowMapper);
+
+        if (!planList.isEmpty())
+            return planList;
+        else
+            return null;
+    }
+
     public Plan getPlan(Integer id){
         String sql = "SELECT id, name, startDay, endDay, state " +
                      "FROM plan WHERE id = :id";

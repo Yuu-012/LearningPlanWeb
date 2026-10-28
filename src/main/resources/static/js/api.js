@@ -1,11 +1,25 @@
-// 查詢計畫
+// 查詢所有計劃
+async function getPlans(){
+    const response = await fetch("/plan", {
+        method: "GET"
+    });
+
+    if (!response.ok)
+        throw new Error("查詢計畫失敗");
+
+    return response.status === 200 ?
+        await response.json() :
+        null;
+}
+
+// 查詢單一計畫
 async function getPlan(id) {
     const response = await fetch(`${"plan"}/${id}`, {
         method: "GET"
     });
 
     if (response.status === 404)
-        throw new Error("該編號查無計畫");
+        throw new Error("該編號不存在");
     else if (!response.ok)
         throw new Error("查詢計畫失敗");
     else
@@ -22,9 +36,7 @@ async function createPlan(plan) {
         body: JSON.stringify(plan)
     });
 
-    if (response.status === 404)
-        throw new Error("該編號查無計畫");
-    else if (!response.ok)
+    if (!response.ok)
         throw new Error("新增計畫失敗");
 
     // 200: 請求接收成功，且已回傳請求資料。
@@ -63,7 +75,7 @@ async function deletePlan(id) {
     });
 
     if (response.status === 404)
-        throw new Error("該編號查無計畫");
+        throw new Error("該編號不存在");
     else if (!response.ok)
         throw new Error("刪除計畫失敗");
 }

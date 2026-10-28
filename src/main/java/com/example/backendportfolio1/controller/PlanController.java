@@ -7,11 +7,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class PlanController {
 
     @Autowired
     private PlanService planService;
+
+    @GetMapping("/plan")
+    public ResponseEntity<List<Plan>> getPlans(){
+        List<Plan> plans = planService.getPlans();
+
+        if (plans != null)
+            return ResponseEntity.status(HttpStatus.OK).body(plans);
+        else
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
 
     @GetMapping("/plan/{id}")
     public ResponseEntity<Plan> getPlan(@PathVariable Integer id){

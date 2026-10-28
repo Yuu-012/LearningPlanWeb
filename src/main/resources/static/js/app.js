@@ -1,9 +1,12 @@
 const planForm = document.getElementById("plan-form");
-const planTitle = document.getElementById("plan-title");
+const planName = document.getElementById("plan-name");
+const planStart = document.getElementById("plan-start");
+const planEnd = document.getElementById("plan-end");
+const planState = document.getElementById("plan-state");
 const planList = document.getElementById("plan-list");
 
-// 將任務顯示在表格
-function renderPlans(plans) {
+// 將所有計畫顯示在表格
+function renderPlan(plans) {
     planList.replaceChildren();
 
     plans.forEach(plan => {
@@ -12,8 +15,8 @@ function renderPlans(plans) {
         const idCell = document.createElement("td");
         idCell.textContent = plan.id;
 
-        const titleCell = document.createElement("td");
-        titleCell.textContent = plan.title;
+        const nameCell = document.createElement("td");
+        nameCell.textContent = plan.name;
 
         const startCell = document.createElement("td");
         startCell.textContent = plan.start;
@@ -22,42 +25,53 @@ function renderPlans(plans) {
         endCell.textContent = plan.end;
 
         const stateCell = document.createElement("td");
-        stateCell.textContent = plan.state;
+        if (plan.state === 1)
+            stateCell.textContent = "是";
+        else
+            stateCell.textContent = "否";
 
-        row.append(idCell, titleCell, startCell, endCell, stateCell);
+        row.append(idCell, nameCell, startCell, endCell, stateCell);
         planList.appendChild(row);
     });
 }
 
-// 從後端載入任務
-async function loadPlan(id) {
+// 從後端載入所有計畫
+async function loadPlans() {
     try {
-        const plan = await getPlan(id);
-        renderPlans(plan);
+        const plans = await getPlans();
+        renderPlan(plans);
     } catch (error) {
         alert(error.message);
     }
 }
 
-// 新增任務
+// 新增計畫
 planForm.addEventListener("submit", async event => {
     event.preventDefault();
 
-    const title = planTitle.value.trim();
+    const name = planName.value.trim();
+    const startDay = planStart.value.trim();
+    const endDay = planEnd.value.trim();
+    const stateString = planState.value.trim();
+    const state = (stateString === "是") ? 1 : 0;
 
-    if (!title) {
-        return;
+    if (!name || !startDay || !endDay || !stateString) {
+        return "沒有接收輸入";
     }
 
     try {
-        await createPlan({ title: title });
+        await createPlan({ name: name, start: startDay,
+                                end: endDay, state: state    });
+        planName.value = "";
+        planStart.value = "";
+        planEnd.value = "";
+        planState.value = "";
 
-        planTitle.value = "";
-        await loadPlan();
+        await loadPlans();
     } catch (error) {
         alert(error.message);
     }
 });
 
-// 網頁載入後，取得任務清單
-loadPlan();
+// 網頁載入後，取得計畫清單
+loadPlans();

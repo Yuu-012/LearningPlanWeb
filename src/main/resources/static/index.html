@@ -9,14 +9,14 @@
     <h1>學習計畫管理</h1>
 
     <form id="plan-form">
-        <input id="plan-title"    type="text"
+        <input id="plan-name"    type="text"
                placeholder="計畫名稱"                  required>
         <input id="plan-start"    type="date"
                placeholder="計畫起始日"                required>
         <input id="plan-end"      type="date"
                placeholder="計畫中止日"                required>
-        <input id="plan-state"    type="number"
-               placeholder="計畫狀態(是否完成/否0/是1)"  required>
+        <input id="plan-state"    type="text"
+               placeholder="計畫是否已完成(填入'是'或'否')"  required>
         <button type="submit">新增計畫</button>
     </form>
 
@@ -27,7 +27,7 @@
                 <th>計畫名稱</th>
                 <th>計畫起始日</th>
                 <th>計畫中止日</th>
-                <th>計畫狀態</th>
+                <th>計畫是否已完成</th>
             </tr>
         </thead>
         <tbody id="plan-list"></tbody>
