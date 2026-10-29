@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -8,33 +9,31 @@
 <body>
     <h1>學習計畫管理</h1>
 
-    <form id="plan-form">
-        <input id="plan-name"    type="text"
-               placeholder="計畫名稱"                  required>
-        <input id="plan-start"    type="date"
-               placeholder="計畫起始日"                required>
-        <input id="plan-end"      type="date"
-               placeholder="計畫中止日"                required>
-        <input id="plan-state"    type="text"
-               placeholder="計畫是否已完成(填入'是'或'否')"  required>
-        <button type="submit">新增計畫</button>
-    </form>
+    <div class="plan-header">
+        <h2>所有計畫</h2>
+        <button type="button"
+                onclick="location.href='addPlan.html'">
+            新增計畫
+        </button>
+    </div>
 
     <table>
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>計畫名稱</th>
-                <th>計畫起始日</th>
-                <th>計畫中止日</th>
-                <th>計畫是否已完成</th>
-            </tr>
+        <tr>
+            <th>計畫名稱</th>
+            <th>計畫起始日</th>
+            <th>計畫中止日</th>
+            <th>計畫是否已完成</th>
+            <th>操作</th>
+        </tr>
         </thead>
-        <tbody id="plan-list"></tbody>
+
+        <tbody id="plan-list">
+        <!-- 由 app.js 動態載入計畫 -->
+        </tbody>
     </table>
 
     <script src="js/api.js"></script>
     <script src="js/app.js"></script>
-
 </body>
 </html>

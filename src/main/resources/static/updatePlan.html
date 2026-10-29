@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>修改學習計畫</title>
+  <link rel="stylesheet" href="css/updatePlan.css">
+</head>
+<body>
+  <h1>修改學習計畫</h1>
+
+  <form id="update-plan-form">
+    <input id="plan-id" type="hidden">
+
+    <label for="plan-name">計畫名稱</label>
+    <input id="plan-name"
+           type="text"
+           placeholder="請輸入計畫名稱"
+           required>
+
+    <label for="plan-start">計畫起始日</label>
+    <input id="plan-start"
+           type="date"
+           required>
+
+    <label for="plan-end">計畫中止日</label>
+    <input id="plan-end"
+           type="date"
+           required>
+
+    <label for="plan-state">計畫是否已完成</label>
+    <select id="plan-state" required>
+      <option value="是">是</option>
+      <option value="否">否</option>
+    </select>
+
+    <button type="submit">確認修改</button>
+    <button type="button"
+            onclick="location.href='index.html'">
+      取消
+    </button>
+  </form>
+
+  <script src="js/api.js"></script>
+  <script src="js/updatePlan.js"></script>
+</body>
+</html>
