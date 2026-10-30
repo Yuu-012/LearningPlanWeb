@@ -1,0 +1,158 @@
+/* ===== 全域設定 ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px 8%;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    background-color: #f7faf7;
+    color: #37483d;
+}
+
+/* ===== 主標題 ===== */
+h1 {
+    text-align: center;
+    color: #355e45;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: #456b52;
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ===== 計畫標題區域 ===== */
+.plan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* ===== 按鈕 ===== */
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: #8dbb98;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #6fa57d;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* ===== 表格 ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(65, 100, 75, 0.06);
+}
+
+/* 表格標題 */
+thead {
+    background-color: #e8f2e9;
+}
+
+th {
+    padding: 17px 15px;
+    color: #456b52;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* 表格內容 */
+td {
+    padding: 16px 15px;
+    font-size: 14px;
+    color: #526158;
+    text-align: center;
+    border-bottom: 1px solid #edf2ed;
+}
+
+/* 表格列 hover */
+tbody tr {
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #f5faf5;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== 表格內的操作按鈕 ===== */
+td button {
+    margin: 3px;
+    padding: 7px 13px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+
+/* 刪除按鈕 */
+td button.delete-btn {
+    background-color: #e9a3a3;
+}
+
+td button.delete-btn:hover {
+    background-color: #d98282;
+}
+
+/* 修改按鈕 */
+td button.update-btn {
+    background-color: #8dbb98;
+}
+
+td button.update-btn:hover {
+    background-color: #6fa57d;
+}
+
+/* ===== RWD：手機版 ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 25px 4%;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .plan-header {
+        gap: 15px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 10px 6px;
+    }
+
+    td button {
+        padding: 6px 9px;
+        font-size: 12px;
+    }
+}

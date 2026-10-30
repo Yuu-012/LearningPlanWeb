@@ -25,14 +25,18 @@ function renderPlan(plans) {
         const actionCell = document.createElement("td");
 
         const updateBtn = document.createElement("button");
+        // classList: 在JavaScript中新增/移除/切換CSS類別
+        updateBtn.classList.add("update-btn");
         updateBtn.textContent = "修改計畫";
 
         updateBtn.addEventListener("click", () => {
+            // window.location.href : 取得當前網頁的網址
             window.location.href =
-                `/updatePlan.html?id=${encodeURIComponent(plan.id)}`;
+                `updatePlan.html?id=${encodeURIComponent(plan.id)}`;
         });
 
         const deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("delete-btn");
         deleteBtn.textContent = "刪除計畫"
 
         deleteBtn.addEventListener("click", async() => {
@@ -50,7 +54,7 @@ function renderPlan(plans) {
         actionCell.appendChild(updateBtn);
         actionCell.appendChild(deleteBtn);
 
-        row.append( nameCell, startCell, endCell, stateCell, actionCell);
+        row.append(nameCell, startCell, endCell, stateCell, actionCell);
         planList.appendChild(row);
     });
 }

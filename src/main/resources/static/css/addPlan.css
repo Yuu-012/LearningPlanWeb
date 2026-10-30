@@ -1,0 +1,125 @@
+/* ===== 全域設定 ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    background-color: #f7faf7;
+    color: #37483d;
+}
+
+/* ===== 頁面標題 ===== */
+h1 {
+    color: #355e45;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* ===== 表單卡片 ===== */
+form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 35px 40px;
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 3px 15px rgba(65, 100, 75, 0.08);
+}
+
+/* ===== 標籤 ===== */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #456b52;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* ===== 輸入欄位 ===== */
+input,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 23px;
+    border: 1px solid #dce8dd;
+    border-radius: 8px;
+    background-color: #fbfdfb;
+    color: #37483d;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* 輸入欄位 Focus */
+input:focus,
+select:focus {
+    border-color: #8dbb98;
+    box-shadow: 0 0 0 3px rgba(141, 187, 152, 0.15);
+}
+
+/* Placeholder */
+input::placeholder {
+    color: #aab8ad;
+}
+
+/* ===== 按鈕區域 ===== */
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #8dbb98;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #6fa57d;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* ===== 按鈕排列 ===== */
+form button {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* 返回主頁按鈕 */
+form button[type="button"] {
+    margin-top: 12px;
+    background-color: #e8f2e9;
+    color: #456b52;
+}
+
+form button[type="button"]:hover {
+    background-color: #d6e9d9;
+}
+
+/* ===== RWD：手機版 ===== */
+@media (max-width: 600px) {
+    body {
+        padding: 30px 16px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    form {
+        padding: 28px 22px;
+    }
+}
