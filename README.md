@@ -1,2 +1,2 @@
-# SecondPracticeGit
-The second test for GitHub repository.
+# LearningPlanWeb
+說明待新增...
