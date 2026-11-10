@@ -18,21 +18,13 @@ public class PlanController {
     @GetMapping("/plan")
     public ResponseEntity<List<Plan>> getPlans(){
         List<Plan> plans = planService.getPlans();
-
-        if (plans != null)
-            return ResponseEntity.status(HttpStatus.OK).body(plans);
-        else
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.status(HttpStatus.OK).body(plans);
     }
 
     @GetMapping("/plan/{id}")
     public ResponseEntity<Plan> getPlan(@PathVariable Integer id){
         Plan plan = planService.getPlan(id);
-
-        if (plan != null)
-            return ResponseEntity.status(HttpStatus.OK).body(plan);
-        else
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.status(HttpStatus.OK).body(plan);
     }
 
     @PostMapping("/plan")

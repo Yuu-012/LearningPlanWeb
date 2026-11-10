@@ -14,8 +14,16 @@ planForm.addEventListener("submit", async event => {
     const stateString = planState.value;
     const state = (stateString === "是") ? 1 : 0;
 
+    const startDay = new Date(start);
+    const endDay = new Date(end);
+
     if (!name || !start || !end || !stateString) {
-        alert("資料未填寫完整");
+        alert("資料未填寫完整。");
+        return;
+    }
+
+    if (startDay > endDay){
+        alert("起始日期不應晚於結束日期。");
         return;
     }
 

@@ -27,10 +27,7 @@ public class PlanDao {
 
         List<Plan> planList = namedParameterJdbcTemplate.query(sql, map, rowMapper);
 
-        if (!planList.isEmpty())
-            return planList;
-        else
-            return null;
+        return planList;
     }
 
     public Plan getPlan(Integer id){
@@ -43,10 +40,7 @@ public class PlanDao {
 
         List<Plan> planList = namedParameterJdbcTemplate.query(sql, map, rowMapper);
 
-        if (!planList.isEmpty())
-            return planList.getFirst();
-        else
-            return null;
+        return planList.getFirst();
     }
 
     public Integer createPlan(Plan plan){
